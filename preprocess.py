@@ -11,7 +11,7 @@ from __future__ import print_function
 
 from music21 import *
 from collections import defaultdict, OrderedDict
-from itertools import groupby, izip_longest
+from itertools import groupby, zip_longest
 from grammar import *
 
 #----------------------------HELPER FUNCTIONS----------------------------------#
@@ -48,7 +48,7 @@ def __parse_midi(data_fn):
     # Full stream containing both the melody and the accompaniment. 
     # All parts are flattened. 
     full_stream = stream.Voice()
-    for i in xrange(len(comp_stream)):
+    for i in range(len(comp_stream)):
         full_stream.append(comp_stream[i])
     full_stream.append(melody_voice)
 
@@ -111,7 +111,7 @@ def __parse_midi(data_fn):
 def __get_abstract_grammars(measures, chords):
     # extract grammars
     abstract_grammars = []
-    for ix in xrange(1, len(measures)):
+    for ix in range(1, len(measures)):
         m = stream.Voice()
         for i in measures[ix]:
             m.insert(i.offset, i)
